@@ -16,3 +16,14 @@ exports.postJob = function (req, res) {
         }
     });
 };
+
+exports.getJobs = function (req, res) {
+    Job.find({}, function (err, jobs) {
+        if (err) {
+            res.status(400).json(err);
+        }
+        console.log(jobs);
+    });
+};
+
+
