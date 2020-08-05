@@ -37,3 +37,11 @@ exports.updateJob = function (req, res) {
         console.log(job);
     });
 };
+
+exports.deleteJob = function (req, res) {
+    Job.findByIdAndRemove("5f2aded4b6f8ec1c0ea80794", function (err, Job) {
+        if (err) {
+            res.status(400).json(err);
+        }
+    });
+};
