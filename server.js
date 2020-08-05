@@ -21,3 +21,8 @@ mongoose.connection.on('connected', () => {
 app.listen(port, function (err) {
     console.log("Listening on Port: " + port)
 });
+
+controllerJob = require('./controllers/jobs-controller');
+
+
+app.get('/', controllerJob.postJob);
