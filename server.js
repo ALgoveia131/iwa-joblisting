@@ -25,4 +25,4 @@ app.listen(port, function (err) {
 controllerJob = require('./controllers/jobs-controller');
 
 
-app.get('/', controllerJob.getJobs);
+app.get('/', controllerJob.updateJob);

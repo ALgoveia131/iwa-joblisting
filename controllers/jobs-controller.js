@@ -27,3 +27,13 @@ exports.getJobs = function (req, res) {
 };
 
 
+exports.updateJob = function (req, res) {
+    Job.findOneAndUpdate({ _id: "5f2aded4b6f8ec1c0ea80794" }, {
+        "Title":"Java Engineer",
+    }, { new: true }, function (err, job) {
+        if (err) {
+            res.status(400).json(err);
+        }
+        console.log(job);
+    });
+};
