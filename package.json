@@ -1,0 +1,22 @@
+{
+  "name": "iwa-joblisting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ALgoveia131/iwa-joblisting.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ALgoveia131/iwa-joblisting/issues"
+  },
+  "homepage": "https://github.com/ALgoveia131/iwa-joblisting#readme",
+  "dependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
