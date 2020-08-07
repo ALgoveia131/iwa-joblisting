@@ -5,7 +5,9 @@ var express = require('express'),
 
 
 router.get('/', controllerJob.getJobs);
+router.post('/', controllerJob.postJob);
+router.post('/update', controllerJob.updateJob);
+router.post('/delete', controllerJob.deleteJob);
 
 
-// Exporting the routes
 module.exports = router;

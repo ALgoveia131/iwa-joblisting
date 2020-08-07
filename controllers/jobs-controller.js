@@ -3,17 +3,13 @@ var Job = require('../models/jobs');
 exports.postJob = function (req, res) {
     res.contentType('application/json');
 
-    var job = new Job({
-        "Title":"Web Dev",
-        "Description":"Web Dev Needed",
-        "Location": "Dublin",
-        "Keywords": "Node, React, Express"
-    });
+    var job = new Job(req.body);
     console.log(job);
     job.save(function (err, job) {
         if (err) {
             res.status(400).json(err);
         }
+        res.redirect('back');
     });
 };
 
@@ -22,26 +18,28 @@ exports.getJobs = function (req, res) {
         if (err) {
             res.status(400).json(err);
         }
-        console.log(jobs);
+        res.render('index', { 
+            data: jobs,
+        });
     });
 };
 
 
 exports.updateJob = function (req, res) {
-    Job.findOneAndUpdate({ _id: "5f2aded4b6f8ec1c0ea80794" }, {
-        "Title":"Java Engineer",
-    }, { new: true }, function (err, job) {
+    console.log(req.body);
+    Job.findOneAndUpdate({ _id: req.body.id }, req.body, { new: true }, function (err, job) {
         if (err) {
             res.status(400).json(err);
         }
-        console.log(job);
-    });
+        res.redirect('back');
+     });
 };
 
 exports.deleteJob = function (req, res) {
-    Job.findByIdAndRemove("5f2aded4b6f8ec1c0ea80794", function (err, Job) {
+    Job.findByIdAndRemove(req.body.id, function (err, Job) {
         if (err) {
             res.status(400).json(err);
         }
+         res.redirect('back');
     });
 };

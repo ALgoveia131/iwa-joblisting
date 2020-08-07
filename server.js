@@ -17,12 +17,12 @@ mongoose.connection.on('connected', () => {
     console.log('MongoDB is connected');
 });
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.use(express.urlencoded({ extended: true }));
+var controllerJob = require('./controllers/jobs-controller');
+app.use(require('./routes/routes'));
 
 app.listen(port, function (err) {
     console.log("Listening on Port: " + port)
 });
-
-controllerJob = require('./controllers/jobs-controller');
-
-
-app.get('/', controllerJob.deleteJob);
