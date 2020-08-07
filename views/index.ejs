@@ -63,8 +63,12 @@
 			</div>
 		</div>
 	</nav>
-
-	<h1 class="blockquote text-center h1">Job Listing</h1>
+<div>
+  <div class="jumbotron">
+    <h1>Job Listing by AGouveia</h1>      
+    <p>Alysson Goveia 2017366</p>
+    <p>Select one job below for more info, update or delete. </p>
+ 
 
 	<div class="container">
 		<div id="accordion">
@@ -79,8 +83,8 @@
 					</h5>
 				</div>
 			</div>
-			<div style="background-color: #e6f7ff" id="item-<%= job._id %>" class="collapse" aria-labelledby="heading-<%= job._id %>"
-				data-parent="#accordion">
+			<div style="background-color: #e6f7ff" id="item-<%= job._id %>" class="collapse"
+				aria-labelledby="heading-<%= job._id %>" data-parent="#accordion">
 				<div class="card-body">
 
 					<strong><%= job.Keywords %>. </strong>
@@ -135,10 +139,11 @@
 				</div>
 			</div>
 			<% 
-                // The for each function finishes here
         }); %>
 		</div>
 	</div>
+     </div>     
+</div>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
 	</script>
