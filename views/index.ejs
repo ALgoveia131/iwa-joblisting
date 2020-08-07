@@ -30,11 +30,6 @@
 					<%= job.Keywords %> <br> <%= job.Description %> </div>
 					<div class="row">
 						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-job-<%= job._id %>">Update</button>
-
-						<form enctype="application/json" action="/delete" method="POST">
-							<input hidden="true" name="id" value="<%= job._id %>">
-							<button type="submit" class="btn btn-secondary">Delete</button>
-						</form>
 					</div>
 					<div class="modal fade" id="modal-job-<%= job._id %>" tabindex="-1" role="dialog"
 						aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -47,7 +42,33 @@
         </button>
 								</div>
 								<div class="modal-body">
-									
+									<form enctype="application/json" action="/update" method="POST">
+										<div class="form-group">
+											<label for="jobTitle">Job Title</label>
+											<input required="true" class="form-control" id="jobTitle" name="Title" value="<%= job.Title %>" placeholder="Enter job title">
+										</div>
+											<div class="form-group">
+												<label for="jobLocation">Location</label>
+												<input class="form-control" id="jobLocation" name="Location" value="<%= job.Location %>" placeholder="Enter job location">
+										    </div>
+												<div class="form-group">
+													<label for="jobKeywords">Keywords</label>
+													<textarea value="<%= job.Keywords %>" name="Keywords" class="form-control" id="jobKeywords" rows="3"><%= job.Keywords %></textarea>
+													<small id="helper" class="form-text text-muted">Keywords separated by commas.</small>
+
+												</div>
+												<div class="form-group">
+													<label for="jobDescription">Description</label>
+													<textarea value="" class="form-control" name="Description" id="jobDescription" rows="3"><%= job.Description %></textarea>
+												</div>
+
+
+												<input hidden="true" name="id" value="<%= job._id %>">
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+													<button type="submit" class="btn btn-primary">Save changes</button>
+												</div>
+									</form>
 								</div>
 							</div>
 						</div>
