@@ -2,9 +2,7 @@ var Job = require('../models/jobs');
 
 exports.postJob = function (req, res) {
     res.contentType('application/json');
-
     var job = new Job(req.body);
-    console.log(job);
     job.save(function (err, job) {
         if (err) {
             res.status(400).json(err);
@@ -26,7 +24,6 @@ exports.getJobs = function (req, res) {
 
 
 exports.updateJob = function (req, res) {
-    console.log(req.body);
     Job.findOneAndUpdate({ _id: req.body.id }, req.body, { new: true }, function (err, job) {
         if (err) {
             res.status(400).json(err);
