@@ -8,7 +8,7 @@
 	<title>Job Listing - Alysson Goveia 2017366</title>
 </head>
 
-<body>
+<body style="background-color: #EAECEF">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="#">IWA CA</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,7 +21,6 @@
 				<a class="nav-link" data-toggle="modal" data-target="#newJob">
 					Post New Job
 				</a>
-
 				<!-- Modal -->
 				<div class="modal fade" id="newJob" tabindex="-1" aria-labelledby="newJobLabel" aria-hidden="true">
 					<div class="modal-dialog">
@@ -29,8 +28,8 @@
 							<div class="modal-header">
 								<h5 class="modal-title" id="newJobLabel">Post New Job</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
+                                <span aria-hidden="true">&times;</span>
+                                </button>
 							</div>
 							<div class="modal-body">
 								<form enctype="application/json" action="/" method="POST">
@@ -63,87 +62,86 @@
 			</div>
 		</div>
 	</nav>
-<div>
-  <div class="jumbotron">
-    <h1>Job Listing by AGouveia</h1>      
-    <p>Alysson Goveia 2017366</p>
-    <p>Select one job below for more info, update or delete. </p>
- 
-
-	<div class="container">
-		<div id="accordion">
-			<%
+	<div>
+		<div class="jumbotron">
+			<h1>Job Listing by AGoveia</h1>
+			<p>Alysson Goveia 2017366</p>
+			<p>Select one job below for more info, update or delete. </p>
+        <div class="container">
+				<div id="accordion">
+					<%
         data.forEach(function (job){ %>
-			<div class="card">
-				<div class="card-header" id="job-<%= job._id %>">
-					<h5 class="mb-0">
-						<button class="btn btn-link" data-toggle="collapse" data-target="#item-<%= job._id %>" aria-expanded="true" aria-controls="collapse-<%= job._id %>">
+					<div class="card">
+						<div class="card-header" id="job-<%= job._id %>">
+							<h5 class="mb-0">
+								<button class="btn btn-link" data-toggle="collapse" data-target="#item-<%= job._id %>" aria-expanded="true" aria-controls="collapse-<%= job._id %>">
           <%= job.Title %> (<%= job.Location %>)
         </button>
-					</h5>
-				</div>
-			</div>
-			<div style="background-color: #e6f7ff" id="item-<%= job._id %>" class="collapse"
-				aria-labelledby="heading-<%= job._id %>" data-parent="#accordion">
-				<div class="card-body">
+							</h5>
+						</div>
+					</div>
+					<div style="background-color: #e6f7ff" id="item-<%= job._id %>" class="collapse"
+						aria-labelledby="heading-<%= job._id %>" data-parent="#accordion">
+						<div class="card-body">
 
-					<strong><%= job.Keywords %>. </strong>
-					<p> <%= job.Description %> </p>
-				</div>
-				<div style="padding: 20px" class="row col align-self-center">
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-job-<%= job._id %>">Update</button>
+							<strong><%= job.Keywords %>. </strong>
+							<p> <%= job.Description %> </p>
+						</div>
+						<div style="padding: 20px" class="row col align-self-center">
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-job-<%= job._id %>">Update</button>
 
-					<form enctype="application/json" action="/delete" method="POST">
-						<input hidden="true" name="id" value="<%= job._id %>">
-						<button style="margin-left: 20px" type="submit" class="btn btn-secondary">Delete</button>
-					</form>
-				</div>
-				<div class="modal fade" id="modal-job-<%= job._id %>" tabindex="-1" role="dialog"
-					aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="label-job-<%= job._id %>">Updating <%= job.Title %></h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<form enctype="application/json" action="/delete" method="POST">
+								<input hidden="true" name="id" value="<%= job._id %>">
+								<button style="margin-left: 20px" type="submit" class="btn btn-secondary">Delete</button>
+							</form>
+						</div>
+						<div class="modal fade" id="modal-job-<%= job._id %>" tabindex="-1" role="dialog"
+							aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="label-job-<%= job._id %>">Updating <%= job.Title %>
+										</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-							</div>
-							<div class="modal-body">
-								<form enctype="application/json" action="/update" method="POST">
-									<div class="form-group">
-										<label for="jobTitle">Job Title</label>
-										<input required="true" class="form-control" id="jobTitle" name="Title" value="<%= job.Title %>" placeholder="Enter job title">
+									</div>
+									<div class="modal-body">
+										<form enctype="application/json" action="/update" method="POST">
+											<div class="form-group">
+												<label for="jobTitle">Job Title</label>
+												<input required="true" class="form-control" id="jobTitle" name="Title" value="<%= job.Title %>" placeholder="Enter job title">
 										</div>
-										<div class="form-group">
-											<label for="jobLocation">Location</label>
-											<input required="true" class="form-control" id="jobLocation" name="Location" value="<%= job.Location %>" placeholder="Enter job location">
+												<div class="form-group">
+													<label for="jobLocation">Location</label>
+													<input required="true" class="form-control" id="jobLocation" name="Location" value="<%= job.Location %>" placeholder="Enter job location">
 										    </div>
-											<div class="form-group">
-												<label for="jobKeywords">Keywords</label>
-												<textarea required="true" value="<%= job.Keywords %>" name="Keywords" class="form-control" id="jobKeywords" rows="3"><%= job.Keywords %></textarea>
-												<small id="helper" class="form-text text-muted">Keywords separated by commas.</small>
-											</div>
-											<div class="form-group">
-												<label for="jobDescription">Description</label>
-												<textarea required="true" class="form-control" name="Description" id="jobDescription" rows="3"><%= job.Description %></textarea>
-											</div>
-											<input hidden="true" name="id" value="<%= job._id %>">
-											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-												<button type="submit" class="btn btn-primary">Save changes</button>
-											</div>
-								</form>
+													<div class="form-group">
+														<label for="jobKeywords">Keywords</label>
+														<textarea required="true" value="<%= job.Keywords %>" name="Keywords" class="form-control" id="jobKeywords" rows="3"><%= job.Keywords %></textarea>
+														<small id="helper" class="form-text text-muted">Keywords separated by commas.</small>
+													</div>
+													<div class="form-group">
+														<label for="jobDescription">Description</label>
+														<textarea required="true" class="form-control" name="Description" id="jobDescription" rows="3"><%= job.Description %></textarea>
+													</div>
+													<input hidden="true" name="id" value="<%= job._id %>">
+													<div class="modal-footer">
+														<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+														<button type="submit" class="btn btn-primary">Save changes</button>
+													</div>
+										</form>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
+					<% 
+        }); %>
 				</div>
 			</div>
-			<% 
-        }); %>
 		</div>
 	</div>
-     </div>     
-</div>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
 	</script>

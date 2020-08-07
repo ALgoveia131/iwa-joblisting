@@ -1,5 +1,7 @@
 var Job = require('../models/jobs');
 
+//Exporting the full CRUD methods
+//CREATE
 exports.postJob = function (req, res) {
     res.contentType('application/json');
     var job = new Job(req.body);
@@ -11,6 +13,7 @@ exports.postJob = function (req, res) {
     });
 };
 
+//READ
 exports.getJobs = function (req, res) {
     Job.find({}, function (err, jobs) {
         if (err) {
@@ -22,7 +25,7 @@ exports.getJobs = function (req, res) {
     });
 };
 
-
+//UPDATE
 exports.updateJob = function (req, res) {
     Job.findOneAndUpdate({ _id: req.body.id }, req.body, { new: true }, function (err, job) {
         if (err) {
@@ -32,6 +35,7 @@ exports.updateJob = function (req, res) {
      });
 };
 
+//DELETE
 exports.deleteJob = function (req, res) {
     Job.findByIdAndRemove(req.body.id, function (err, Job) {
         if (err) {

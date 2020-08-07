@@ -1,6 +1,8 @@
 
 var mongoose = require('mongoose');
 
+//The shema for jobs
+//All the elemets are string and required
 var jobSchema = new mongoose.Schema({
     
     Title: {
