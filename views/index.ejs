@@ -9,6 +9,8 @@
 </head>
 
 <body>
+
+
     <h1 class="blockquote text-center h1">Job Listing</h1>
 
 	<div class="container">
@@ -30,6 +32,11 @@
 					<%= job.Keywords %> <br> <%= job.Description %> </div>
 					<div class="row">
 						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-job-<%= job._id %>">Update</button>
+
+						<form enctype="application/json" action="/delete" method="POST">
+							<input hidden="true" name="id" value="<%= job._id %>">
+							<button type="submit" class="btn btn-secondary">Delete</button>
+						</form>
 					</div>
 					<div class="modal fade" id="modal-job-<%= job._id %>" tabindex="-1" role="dialog"
 						aria-labelledby="exampleModalLabel" aria-hidden="true">
